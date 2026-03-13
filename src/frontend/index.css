@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark fashion-forward theme — obsidian & champagne */
+    --background: 0.12 0.005 285;
+    --foreground: 0.95 0.01 85;
+
+    --card: 0.16 0.008 285;
+    --card-foreground: 0.95 0.01 85;
+
+    --popover: 0.16 0.008 285;
+    --popover-foreground: 0.95 0.01 85;
+
+    --primary: 0.82 0.08 85;
+    --primary-foreground: 0.12 0.005 285;
+
+    --secondary: 0.22 0.01 285;
+    --secondary-foreground: 0.88 0.02 85;
+
+    --muted: 0.20 0.008 285;
+    --muted-foreground: 0.58 0.015 285;
+
+    --accent: 0.75 0.12 85;
+    --accent-foreground: 0.12 0.005 285;
+
+    --destructive: 0.55 0.22 27;
+    --destructive-foreground: 0.98 0.005 0;
+
+    --border: 0.26 0.01 285;
+    --input: 0.22 0.01 285;
+    --ring: 0.82 0.08 85;
+
+    --radius: 0.5rem;
+
+    --sidebar: 0.14 0.006 285;
+    --sidebar-foreground: 0.88 0.02 85;
+    --sidebar-primary: 0.82 0.08 85;
+    --sidebar-primary-foreground: 0.12 0.005 285;
+    --sidebar-accent: 0.20 0.008 285;
+    --sidebar-accent-foreground: 0.88 0.02 85;
+    --sidebar-border: 0.26 0.01 285;
+    --sidebar-ring: 0.82 0.08 85;
+
+    --chart-1: 0.70 0.18 27;
+    --chart-2: 0.65 0.15 200;
+    --chart-3: 0.72 0.14 140;
+    --chart-4: 0.78 0.12 85;
+    --chart-5: 0.60 0.20 310;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Grain overlay for depth */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Dress thumbnail hover ring */
+.dress-card {
+  transition: all 0.2s ease;
+}
+.dress-card:hover {
+  transform: translateY(-2px);
+}
+.dress-card.selected {
+  box-shadow: 0 0 0 2px oklch(0.82 0.08 85);
+}
+
+/* Custom slider thumb */
+input[type='range'] {
+  accent-color: oklch(0.82 0.08 85);
+}
